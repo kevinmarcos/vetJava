@@ -33,7 +33,7 @@ public class vetController {
             vet1.setNombre("Mundo Animal");
             vet1.setDescripcion("Diagnosticar, pronosticar, tratar y prevenir enfermedades.");
             vet1.setDireccion("Av. Tacna 2300");
-            vet1.setHorario("8am-5pm");
+            vet1.setHorario("9am-5pm");
             vet1.setDestacado(1);
             
             vetModel vet2 = new vetModel();
