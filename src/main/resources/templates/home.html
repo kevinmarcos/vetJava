@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html  xmlns:th="http://www.thymeleaf.org">
+
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
     <head>
         <title>Vet-Peru</title>
         <meta charset="UTF-8">
@@ -13,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar scroll</a>
+                <a class="navbar-brand" th:href="@{/}">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -35,34 +32,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </nav>
         <div class="container">
             <h2 style="margin: 30px 0px;">Veterinarias Perú</h2>
-        <table class="table table-striped" style="width: 80%;">
-            <tr>
-                <th>ID</th>
-                <th>LOGO</th>
-                <th>NOMBRE</th>
-                <th>DESCRIPCIÓN</th>
-                <th>DIRECCÓN</th>
-                <th>HORARIO</th>
-                <th>DESTACADO</th>
-            </tr>
+            <table class="table table-striped" style="width: 80%;">
+                <tr>
+                    <th>ID</th>
+                    <th>LOGO</th>
+                    <th>NOMBRE</th>
+                    <th>DESCRIPCIÓN</th>
+                    <th>DIRECCÓN</th>
+                    <th>HORARIO</th>
+                    <th>INFO</th>
+                    <th>DESTACADO</th>
+                </tr>
 
-            <tr th:each="vet : ${vets}">
+                <tr th:each="vet : ${vets}">
 
-                <td th:text="${vet.id}"></td>
-                <td>
-                    <img th:src="${vet.logo}" alt="alt" style="width: 100px">
-                </td>
-                <td th:text="${vet.nombre}"></td>
-                <td th:text="${vet.descripcion}"></td>
-                <td th:text="${vet.direccion}"></td>
-                <td th:text="${vet.horario}"></td> 
-                <td>
-                    <span th:if="${vet.destacado == 1 }" class="badge bg-success">SI</span>
-                    <span th:unless="${vet.destacado == 1 }" class="badge bg-danger">NO</span>
-                </td> 
-            </tr>
-        </table>
+                    <td th:text="${vet.id}"></td>
+                    <td>
+                        <img th:src="@{/images/{id} (id=${vet.logo})}" alt="alt" style="width: 100px">
+                    </td>
+                    <td th:text="${vet.nombre}"></td>
+                    <td th:text="${vet.descripcion}"></td>
+                    <td th:text="${vet.direccion}"></td>
+                    <td th:text="${vet.horario}"></td> 
+                    <td>
+                        <a th:href="@{veterinaria/{id} (id=${vet.id})}" class="btn btn-info">INFO</a>
+                    </td>
+                    </td>
+                    <td>
+                        <span th:if="${vet.destacado == 1 }" class="badge bg-success">SI</span>
+                        <span th:unless="${vet.destacado == 1 }" class="badge bg-danger">NO</span>
+                    </td> 
+                </tr>
+            </table>
         </div>
-        
+
     </body>
 </html>
